@@ -4,14 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- I chose RelativeLayout as the root because I have never used it and wanted to bind the fab to the bottom right relative to the parent. -->
-    <RelativeLayout
+    <!-- I chose ConstraintLayout as the root because it is easy to constrain the fab to the bottom right -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ShoeListFragment">
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ShoeListFragment">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/shoeListLayout"
                 android:layout_width="match_parent"
@@ -20,14 +21,16 @@
                 android:orientation="vertical">
             </LinearLayout>
         </ScrollView>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_add" />
-    </RelativeLayout>
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

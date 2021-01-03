@@ -49,7 +49,6 @@ class ShoeListFragment : Fragment() {
 
         // Floating action button listener
         binding.fab.setOnClickListener { v: View ->
-            Log.i("TESTCLIOCK", "FAB CLICKED")
             v.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
