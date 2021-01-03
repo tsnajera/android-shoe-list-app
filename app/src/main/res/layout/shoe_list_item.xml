@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- I chose a CardView because I envisioned each shoe as a card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="4dp">
+
+            <!-- I also chose ConstraintLayout because I wanted to align the views with ease -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/nameLabelTextView"
+                    style="@style/ShoeListItemLabel"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/shoe_name_text"
+                    app:layout_constraintEnd_toStartOf="@+id/sizeLabelTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sizeLabelTextView"
+                    style="@style/ShoeListItemLabel"
+                    android:text="@string/shoe_size_text"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/companyLabelTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/nameLabelTextView" />
+
+                <TextView
+                    android:id="@+id/companyLabelTextView"
+                    style="@style/ShoeListItemLabel"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/shoe_company_text"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/sizeLabelTextView" />
+
+                <TextView
+                    android:id="@+id/nameValueTextView"
+                    style="@style/ShoeListItemValue"
+                    android:layout_marginStart="16dp"
+                    android:text="@{shoe.name}"
+                    app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/sizeValueTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameLabelTextView" />
+
+                <TextView
+                    android:id="@+id/sizeValueTextView"
+                    style="@style/ShoeListItemValue"
+                    android:text="@{ `` + shoe.size}"
+                    app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/companyValueTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/nameValueTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/sizeLabelTextView" />
+
+                <TextView
+                    android:id="@+id/companyValueTextView"
+                    style="@style/ShoeListItemValue"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{shoe.company}"
+                    app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/sizeValueTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/companyLabelTextView" />
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{shoe.description}"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>
